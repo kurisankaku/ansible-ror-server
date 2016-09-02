@@ -1,0 +1,4 @@
+---
+- include: bash_profile.yml
+- include: yum.yml
+- include: firewalld.yml
