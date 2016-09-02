@@ -1,4 +1,4 @@
 ---
 - include: ruby.yml
 - include: gem.yml
-- include: nginx.yml
+- { include: nginx.yml, when: "{{ target_stage }} != 'development'" }
