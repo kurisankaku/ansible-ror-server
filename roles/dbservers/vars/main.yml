@@ -43,7 +43,6 @@ mysql_enablerepo: ""
 mysql_port: "3306"
 mysql_bind_address: '0.0.0.0'
 mysql_datadir: /var/lib/mysql
-mysql_pid_file: /var/run/mysqld/mysqld.pid
 mysql_skip_name_resolve: yes
 
 # Slow query log settings.
@@ -89,8 +88,6 @@ mysql_mysqldump_max_allowed_packet: "64M"
 
 # Logging settings.
 mysql_log: ""
-mysql_log_error: /var/log/mysql.err
-mysql_syslog_tag: mysql
 
 mysql_config_include_files: []
 #  - src: path/relative/to/playbook/file.cnf

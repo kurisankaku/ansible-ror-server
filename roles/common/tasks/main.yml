@@ -1,4 +1,6 @@
 ---
 - include: bash_profile.yml
 - include: yum.yml
-- { include: firewalld.yml, when: "{{ target_stage }} != 'development'" }
+- include: firewalld.yml
+  become: yes
+  when: target_stage == "production"
