@@ -45,6 +45,7 @@
   when: is_td|failed
 
 - name: add gpg key for fluentd
+  become: yes
   rpm_key: state=present key=https://packages.treasuredata.com/GPG-KEY-td-agent
 
 - name: copy rpm repo for fluentd
