@@ -1,6 +1,7 @@
 ---
 - include: bash_profile.yml
 - include: yum.yml
+- include: ntp.yml
 - include: firewalld.yml
   become: yes
   when: target_stage == "production"
