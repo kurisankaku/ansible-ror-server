@@ -1,12 +1,12 @@
 ---
 - name: reload daemon
   become: yes
-  sehll: systemctl daemon-reload
+  shell: systemctl daemon-reload
 
 - name: reload nginx
   become: yes
   service: name=nginx state=reloaded
 
-- name: reload td-agent
+- name: restart td-agent
   become: yes
-  service: name=td-agent state=reloaded
+  service: name=td-agent state=restarted

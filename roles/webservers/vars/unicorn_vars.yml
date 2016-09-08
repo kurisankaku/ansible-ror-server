@@ -1,0 +1,3 @@
+---
+rails_root_dir: "/var/www/rails_template/current"
+server_user: "vagrant"

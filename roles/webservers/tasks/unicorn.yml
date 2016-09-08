@@ -1,0 +1,25 @@
+---
+- name: Include unicorn variables.
+  include_vars: unicorn_vars.yml
+
+- name: Copy unicorn start script to init.d.
+  become: yes
+  template:
+    src: unicorn.j2
+    dest: /etc/init.d/unicorn
+    owner: root
+    group: root
+    mode: 0755
+
+- name: Check rails file is exists.
+  stat: path="{{ rails_root_dir }}/Gemfile"
+  register: is_exist_gemfile
+
+- name: reload daemon
+  become: yes
+  shell: systemctl daemon-reload
+
+- name: Ensure unicorn is running and enabled on boot
+  become: yes
+  service: name=unicorn state=started enabled=yes
+  when: is_exist_gemfile.stat.exists

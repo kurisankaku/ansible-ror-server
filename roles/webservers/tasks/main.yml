@@ -3,5 +3,7 @@
 - include: gem.yml
 - include: nginx.yml
   when: target_stage == "production"
+- include: unicorn.yml
+  when: target_stage == "production"
 - include: fluentd.yml
   when: target_stage == "production"

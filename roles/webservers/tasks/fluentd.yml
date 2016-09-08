@@ -56,11 +56,15 @@
   become: yes
   yum: name=td-agent state=present
 
-- name: create nginx accesslog pos file if not exist
-  file: path="{{ nginx_access_log_pos_file }}" state=touch
-
 - name: Include nginx variables.
   include_vars: nginx_vars.yml
+
+- name: Include fluentd variables.
+  include_vars: fluentd_vars.yml
+
+- name: create nginx accesslog pos file if not exist
+  become: yes
+  file: path="{{ nginx_access_log_pos_file }}" state=touch
 
 - name: td-agent configuration in place.
   become: yes
@@ -74,6 +78,7 @@
     - reload td-agent
 
 - name: Change user to root.
+  become: yes
   replace:
     dest: /etc/init.d/td-agent
     regexp: "{{ item.regexp }}"
@@ -85,7 +90,7 @@
       replace: "TD_AGENT_GROUP=root"
   notify:
     - reload daemon
-    - reload td-agent
+    - restart td-agent
 
 - name: Ensure fluentd is running and enabled on boot
   become: yes
