@@ -73,6 +73,20 @@
   notify:
     - reload td-agent
 
+- name: Change user to root.
+  replace:
+    dest: /etc/init.d/td-agent
+    regexp: "{{ item.regexp }}"
+    replace: "{{ item.replace }}"
+  with_items:
+    - regexp: "TD_AGENT_USER=td-agent"
+      replace: "TD_AGENT_USER=root"
+    - regexp: "TD_AGENT_GROUP=td-agent"
+      replace: "TD_AGENT_GROUP=root"
+  notify:
+    - reload daemon
+    - reload td-agent
+
 - name: Ensure fluentd is running and enabled on boot
   become: yes
   service: name=td-agent state=started enabled=yes
