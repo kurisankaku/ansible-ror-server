@@ -2,7 +2,7 @@
   @type tail
   format nginx
   path {{ nginx_access_log }}
-  pos_file /var/log/td-agent/buffer/nginx.access.log.pos
+  pos_file {{ nginx_access_log_pos_file }}
   tag nginx.access
 </source>
 <match nginx.access>

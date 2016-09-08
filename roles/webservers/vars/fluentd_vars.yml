@@ -1,0 +1,1 @@
+nginx_access_log_pos_file: /var/log/td-agent/buffer/nginx.access.log.pos

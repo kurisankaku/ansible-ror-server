@@ -56,6 +56,9 @@
   become: yes
   yum: name=td-agent state=present
 
+- name: create nginx accesslog pos file if not exist
+  file: path="{{ nginx_access_log_pos_file }}" state=touch
+
 - name: Include nginx variables.
   include_vars: nginx_vars.yml
 
