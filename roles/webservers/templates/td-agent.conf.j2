@@ -1,0 +1,16 @@
+<source>
+  @type tail
+  format nginx
+  path {{ nginx_access_log }}
+  pos_file /var/log/td-agent/buffer/nginx.access.log.pos
+  tag nginx.access
+</source>
+<match nginx.access>
+  @type forward
+  retry_limit 5
+  flush_interval 5s
+  <server>
+    host 192.168.33.11
+    port 24224
+  </server>
+</match>
