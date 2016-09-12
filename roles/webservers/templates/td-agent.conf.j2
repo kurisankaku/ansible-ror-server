@@ -8,7 +8,7 @@
 <match nginx.access>
   @type forward
   retry_limit 5
-  flush_interval 5s
+  flush_interval 60s
   <server>
     host 192.168.33.11
     port 24224
