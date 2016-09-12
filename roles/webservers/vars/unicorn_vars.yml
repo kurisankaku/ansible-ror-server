@@ -2,4 +2,6 @@
 rails_root_dir: "/var/www/rails_template/current"
 unicorn_log_dir: "/var/www/rails_template/shared/log"
 unicorn_pid: "/var/www/rails_template/shared/tmp/pids/unicorn.pid"
+unicorn_log_owner: "vagrant"
+unicorn_log_group: "vagrant"
 server_user: "vagrant"
