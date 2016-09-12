@@ -15,6 +15,15 @@
   stat: path="{{ rails_root_dir }}/Gemfile"
   register: is_exist_gemfile
 
+- name: Copy logrotate file for rails.
+  become: yes
+  template:
+    src: unicorn_logrotate.j2
+    dest: /etc/logrotate.d/unicorn
+    owner: root
+    group: root
+    mode: 0644
+
 - name: reload daemon
   become: yes
   shell: systemctl daemon-reload
