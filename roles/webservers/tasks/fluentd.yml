@@ -75,7 +75,7 @@
     group: root
     mode: 0644
   notify:
-    - reload td-agent
+    - restart td-agent
 
 - name: Change user to root.
   become: yes
