@@ -1,0 +1,12 @@
+---
+- name: copy docker yum repo.
+  become: yes
+  copy: src=docker_repo dest=/etc/yum.repos.d/docker.repo
+
+- name: install the docker package.
+  become: yes
+  yum: name=docker-engine state=present
+
+- name: Ensure docker is running and enabled on boot
+  become: yes
+  service: name=docker state=started enabled=yes
