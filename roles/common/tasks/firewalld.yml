@@ -14,7 +14,7 @@
     permanent: "{{ item.permanent | default(True) }}"
     state: "{{ item.state | default('enabled') }}"
     rich_rule: "{{ item.rich_rule }}"
-  with_items: "{{ firewall_allow_rich_rule }}"
+  with_items: "{{ firewall_allow_rich_rule | default([]) }}"
   notify: firewalld reload
 
 - name: Add firewalld rules for services from vars
@@ -23,7 +23,7 @@
     zone: "{{ item.zone | default('public') }}"
     permanent: "{{ item.permanent | default(True) }}"
     state: "{{ item.state | default('enabled') }}"
-  with_items: "{{ firewall_allow_services }}"
+  with_items: "{{ firewall_allow_services | default([]) }}"
   notify: firewalld reload
 
 - name: Add firewalld rules for ports from vars
@@ -32,5 +32,5 @@
     zone: "{{ item.zone | default('public') }}"
     permanent: "{{ item.permanent | default(True) }}"
     state: "{{ item.state | default('enabled') }}"
-  with_items: "{{ firewall_allow_ports }}"
+  with_items: "{{ firewall_allow_ports | default([]) }}"
   notify: firewalld reload
