@@ -4,5 +4,8 @@
 [dbservers]
 192.168.33.10
 
+[redis]
+192.168.33.10
+
 [all:vars]
 target_stage=production
