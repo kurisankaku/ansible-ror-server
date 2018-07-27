@@ -1,5 +1,4 @@
 ---
-- include: webservers.yml
-- include: dbservers.yml
-- include: redis.yml
-- include: tools.yml
+- import_playbook: webservers.yml
+- import_playbook: dbservers.yml
+- import_playbook: redis.yml

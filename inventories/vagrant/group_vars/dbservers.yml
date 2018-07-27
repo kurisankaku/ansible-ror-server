@@ -1,0 +1,19 @@
+---
+# .my.cnf destination..
+mysql_user_home: /root
+# root user settings.
+mysql_root_username: root
+mysql_root_password: root
+
+# Databases.
+mysql_databases:
+  - name: rails_template
+    collation: utf8mb4_general_ci
+    encoding: utf8mb4
+
+# Users.
+mysql_users: []
+#   - name: example
+#     host: 127.0.0.1
+#     password: secret
+#     priv: *.*:USAGE

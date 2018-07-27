@@ -11,7 +11,7 @@
     state: present
     regexp: "{{ item.regexp }}"
     line: "{{ item.line }}"
-  with_items:
+  loop:
     - regexp: "^root soft nofile 65536"
       line: "root soft nofile 65536"
     - regexp: "^root hard nofile 65536"
@@ -24,7 +24,7 @@
     name: "{{ item.param }}"
     value: "{{ item.value }}"
     state: present
-  with_items:
+  loop:
     - param: "net.ipv4.tcp_tw_recycle"
       value: "1"
     - param: "net.ipv4.tcp_tw_reuse"
@@ -64,7 +64,9 @@
 
 - name: create nginx accesslog pos file if not exist
   become: yes
-  file: path="{{ nginx_access_log_pos_file }}" state=touch
+  file:
+    path: "{{ nginx_access_log_pos_file }}"
+    state: touch
 
 - name: td-agent configuration in place.
   become: yes
@@ -83,7 +85,7 @@
     dest: /etc/init.d/td-agent
     regexp: "{{ item.regexp }}"
     replace: "{{ item.replace }}"
-  with_items:
+  loop:
     - regexp: "TD_AGENT_USER=td-agent"
       replace: "TD_AGENT_USER=root"
     - regexp: "TD_AGENT_GROUP=td-agent"

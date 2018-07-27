@@ -1,0 +1,16 @@
+[Unit]
+Description=Puma HTTP Server
+After=network.target
+
+[Service]
+# Foreground process (do not use --daemon in ExecStart or config.rb)
+Type=simple
+Environment="BUNDLE_GEMFILE={{gemfile_path}}"
+
+ExecStart=/usr/local/src/rbenv/shims/bundle exec pumactl -F {{puma_config_path}} start
+ExecStop=/usr/local/src/rbenv/shims/bundle exec pumactl -F {{puma_config_path}} stop
+ExecReload=/usr/local/src/rbenv/shims/bundle exec pumactl -F {{puma_config_path}} restart
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

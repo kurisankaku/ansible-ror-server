@@ -1,0 +1,9 @@
+---
+puma_sock_path: /var/run/puma.sock
+puma_config_path: /var/www/api/config/puma.rb
+gemfile_path: /var/www/api/Gemfile
+nginx_api_sock_path: /var/run/puma.sock
+nginx_api_root_path: /var/www/api
+nginx_front_enable_image_processing: true
+nginx_front_root_path: /var/www/front
+

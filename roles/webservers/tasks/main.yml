@@ -1,10 +1,5 @@
 ---
-# - include: docker.yml
-- include: ruby.yml
-- include: gem.yml
-- include: nginx.yml
-  when: target_stage == "production"
-- include: unicorn.yml
-  when: target_stage == "production"
-- include: fluentd.yml
-  when: target_stage == "production"
+- import_tasks: ruby.yml
+- import_tasks: gem.yml
+- import_tasks: nginx.yml
+ #- import_tasks: fluentd.yml

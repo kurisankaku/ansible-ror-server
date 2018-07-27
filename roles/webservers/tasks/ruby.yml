@@ -16,7 +16,7 @@
     state: present
     regexp: "{{item.regexp}}"
     line: "{{item.line}}"
-  with_items:
+  loop:
     - regexp: "^export PATH=\\$HOME/.rbenv/bin:\\$PATH$"
       line: "export PATH=$HOME/.rbenv/bin:$PATH"
     - regexp: '^eval \"\$\(rbenv init -\)\"$'
@@ -27,7 +27,7 @@
     name: "{{item.name}}"
     state: latest
   become: yes
-  with_items:
+  loop:
     - name: gcc
     - name: bzip2
     - name: openssl-devel
@@ -50,7 +50,7 @@
 
 - name: install ruby
   shell: /bin/bash -lc "rbenv install {{ruby_version}}"
-  when: is_exists_ruby|failed
+  when: is_exists_ruby is failed
 
 - name: set default ruby version
   shell: /bin/bash -lc "rbenv global {{ruby_version}}"

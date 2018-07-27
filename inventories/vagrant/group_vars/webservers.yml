@@ -1,0 +1,4 @@
+---
+nginx_s3host: test
+nginx_api_server_name: vagrant.api.server
+nginx_front_server_name: vagrant.front.server

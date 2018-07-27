@@ -1,0 +1,16 @@
+---
+- name: Create puma.service
+  template:
+    src: "puma.service.j2"
+    dest: /usr/lib/systemd/system/puma.service
+    owner: root
+    group: root
+    mode: 0644
+  notify:
+    - reload puma
+
+- name: set auto start puma
+  service:
+    name: puma
+    enabled: yes
+

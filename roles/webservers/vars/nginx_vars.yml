@@ -1,5 +1,4 @@
 ---
-nginx_unicorn_sock_path: "unix:/var/www/rails_template/shared/tmp/sockets/unicorn.sock"
-nginx_root: "/var/www/rails_template/current/public"
-nginx_access_log: "/var/log/nginx/access.log"
-nginx_error_log: "/var/log/nginx/error.log"
+nginx_server_confs:
+  - "front"
+  - "api"
