@@ -96,7 +96,7 @@
 
 - name: Create health.txt for health check.
   template:
-    src: "nginx-helath.txt.j2"
+    src: "nginx-health.txt.j2"
     dest: "/etc/nginx/html/health.txt"
     owner: root
     group: root
