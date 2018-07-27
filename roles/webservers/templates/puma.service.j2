@@ -7,9 +7,9 @@ After=network.target
 Type=simple
 Environment="BUNDLE_GEMFILE={{gemfile_path}}"
 
-ExecStart=/usr/local/src/rbenv/shims/bundle exec pumactl -F {{puma_config_path}} start
-ExecStop=/usr/local/src/rbenv/shims/bundle exec pumactl -F {{puma_config_path}} stop
-ExecReload=/usr/local/src/rbenv/shims/bundle exec pumactl -F {{puma_config_path}} restart
+ExecStart=/root/.rbenv/shims/bundle exec pumactl -F {{puma_config_path}} start
+ExecStop=/root/.rbenv/shims/bundle exec pumactl -F {{puma_config_path}} stop
+ExecReload=/root/.rbenv/shims/bundle exec pumactl -F {{puma_config_path}} restart
 Restart=always
 
 [Install]
