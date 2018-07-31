@@ -1,0 +1,4 @@
+---
+nginx_s3host: test
+nginx_api_server_name: web.sample.kurisankaku.xyz
+nginx_front_server_name: front.sample.kurisankaku.xyz img.sample.kurisankaku.xyz
