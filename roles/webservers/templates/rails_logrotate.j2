@@ -1,0 +1,12 @@
+{{ puma_app_path }}/log/*log {
+  daily
+  dateext
+  dateformat -%Y%m%d
+  notifempty
+  missingok
+  rotate 30
+  compress
+  delaycompress
+  copytruncate
+  sharedscripts
+}

@@ -123,6 +123,15 @@
   notify:
     - reload nginx
 
+- name: Copy logrotate file for nginx.
+  become: yes
+  template:
+    src: nginx_logrotate.j2
+    dest: /etc/logrotate.d/nginx
+    owner: root
+    group: root
+    mode: 0644
+
 - name: set auto start nginx
   service:
     name: nginx
